@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}添加职员{% endblock %}
+{% block content %}
+<h2>添加职员</h2>
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label">职员编号</label>
+    <input name="employee_id" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">姓名</label>
+    <input name="name" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">联系方式</label>
+    <input name="contact" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">职位</label>
+    <input name="position" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-primary">添加</button>
+</form>
+{% endblock %}

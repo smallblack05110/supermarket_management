@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}{{ table_name }}{% endblock %}
+{% block content %}
+<h2>{{ table_name }}</h2>
+{% if not rows %}<p>暂无数据。</p>{% else %}
+<div class="table-responsive"><table class="table table-bordered table-hover">
+<thead class="table-light"><tr>{% for col in rows[0].keys() %}<th>{{ col }}</th>{% endfor %}</tr></thead>
+<tbody>{% for row in rows %}<tr>{% for cell in row.values() %}<td>{{ cell }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+</table></div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}首页 - 超市管理{% endblock %}
+{% block content %}
+<h2>数据概览</h2>
+
+<div class="accordion" id="dataAccordion">
+  {% for cat in categories %}
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="heading{{ loop.index }}">
+      <button class="accordion-button {% if not loop.first %}collapsed{% endif %}"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapse{{ loop.index }}"
+              aria-expanded="{{ 'true' if loop.first else 'false' }}"
+              aria-controls="collapse{{ loop.index }}">
+        {{ cat.name }}
+      </button>
+    </h2>
+    <div id="collapse{{ loop.index }}"
+         class="accordion-collapse collapse {% if loop.first %}show{% endif %}"
+         aria-labelledby="heading{{ loop.index }}"
+         data-bs-parent="#dataAccordion">
+      <div class="accordion-body p-0">
+        <div class="list-group">
+          {% for t in cat['items'] %}
+            {% if t.arg %}
+              <a href="{{ url_for(t.endpoint, table_name=t.arg) }}"
+                 class="list-group-item list-group-item-action">{{ t.name }}</a>
+            {% else %}
+              <a href="{{ url_for(t.endpoint) }}"
+                 class="list-group-item list-group-item-action">{{ t.name }}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

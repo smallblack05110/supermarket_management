@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}添加供应商{% endblock %}
+{% block content %}
+<h2>添加供应商</h2>
+<form method="post">
+<div class="mb-3"><label class="form-label">供应商编号</label><input name="supplier_id" class="form-control" required></div>
+<div class="mb-3"><label class="form-label">供应商名称</label><input name="name" class="form-control" required></div>
+<div class="mb-3"><label class="form-label">地址</label><input name="address" class="form-control" required></div>
+<div class="mb-3"><label class="form-label">联系方式</label><input name="contact" class="form-control"required></div>
+<button type="submit" class="btn btn-primary">添加</button>
+</form>
+{% endblock %}
